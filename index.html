@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+  
+<head>
+
+    <meta chartset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>Timer synchronisé sans serveur</title>
+
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-contnt: center;
+            height: 100vh;
+        }
+        .timer {
+            font-size: 5rem;
+        }
+    </style>
+
+</head>
+
+  
+<body>
+  
+    <div class="timer" id="timer">60</div>
+
+    <script>
+        // Heure de début en millisecondes (définie ici comme une constante, par exemple, l'heure actuelle)
+        const startTime = new Date("2024-10-29T10:00:00Z").getTime();          // A remplacer par l'heure de début souhaitée
+        const countdownDuration = 60*1000;          // 60 secondes en milliseconde
+
+        function updateTimer() {
+            const now = Date.now();
+            const timeElapsed = now - startTime;
+            const timeLeft = Math.max(0, Math.floor((countdownDuration-timeElapsed)/1000));
+
+            document.getElementById("timer").textContent = timeLeft;
+
+            if (timeLeft>0) {
+                requestAnimationFrame(updateTimer);
+            }  else {
+                document.getElementById("timer").textContent="0";
+            }
+        }
+    
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
